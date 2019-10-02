@@ -1,0 +1,7 @@
+#endpoint: ''
+endpoint: http://localhost:4466/hackernews-node/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client/

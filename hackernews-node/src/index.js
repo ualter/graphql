@@ -1,4 +1,5 @@
 const { GraphQLServer } = require('graphql-yoga')
+const { prisma } = require('./generated/prisma-client')
 
 const resolvers = {
     Query: {
@@ -6,7 +7,10 @@ const resolvers = {
         user: (parent, args) => retrieveUser(args.id)
     },
     Mutation: {
-        createUser: (parent, args) => createUser(parent,args),
+        createUser: (parent, args, context) => {
+            console.log(context.prisma);
+            return prisma.createUser({name: args.name});
+        },
         updateUser: (parent, args) => updateUser(parent, args),
         deleteUser: (parent, args) => deleteUser(parent, args)
     },
@@ -24,15 +28,6 @@ server.start(() => console.log('Server is running on http://localhost:4000'))
 
 function retrieveUser(id) {
     return findUser(id);
-}
-function createUser(parent, args) {
-    let id_user = generateId(8);
-    let newUser = {
-        id: id_user,
-        name: args.name
-    };
-    users_sampleData.push(newUser);
-    return newUser;
 }
 function updateUser(parent, args) {
     let user = findUser(args.id);    
