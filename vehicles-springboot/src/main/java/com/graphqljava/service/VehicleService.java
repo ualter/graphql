@@ -40,4 +40,13 @@ public class VehicleService {
 	public Optional<Vehicle> getVehicle(final int id) {
 		return this.vehicleRepository.findById(id);
 	}
+	
+	@Transactional
+	public boolean deleteVehicle(final int id ) {
+		if ( this.vehicleRepository.existsById(id) ) {
+			this.vehicleRepository.deleteById(id);
+			return true;
+		}
+		return false;
+	}
 }
