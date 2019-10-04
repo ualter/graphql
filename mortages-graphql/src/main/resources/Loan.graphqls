@@ -1,0 +1,29 @@
+type Mortage {
+  id: ID!
+  credit: Float!
+  interest: Int!
+  isActive: Boolean!
+  balance: Float!
+  trust: Float!
+  risk: Int!
+  calculated: Boolean!
+  directive: Boolean!
+  foreignCurrency: String!
+  borrower: Borrower!
+}
+
+
+enum Currency {
+  EURO
+  REAL
+  DOLAR
+}
+
+extend type Query {
+  findAllMortage: [Mortage]!
+  countMortage: Long!
+}
+
+extend type Mutation {
+  newMortage(credit: Float!, interest: Float!, foreignCurrency: String!) : Mortage!
+}

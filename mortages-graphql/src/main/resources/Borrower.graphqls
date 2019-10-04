@@ -1,0 +1,22 @@
+type Borrower {
+    id: ID!
+    eyeColor: String!
+    name: String!
+    gender: String!
+    company: String!
+    email: String!
+    phone: String!
+    address: String!
+    registered: String!
+}
+
+
+type Query {
+    findBorrowers: [Borrower]!
+    countBorrowers: Long!
+}
+
+type Mutation {
+    newBorrower(eyeColor: String!, name: String!, gender: String!) : Borrower!
+    deleteBorrower(id: ID!) : Boolean
+}
