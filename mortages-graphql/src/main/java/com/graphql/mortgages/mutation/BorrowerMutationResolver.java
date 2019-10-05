@@ -20,6 +20,6 @@ public class BorrowerMutationResolver implements GraphQLMutationResolver {
     public Boolean deleteBorrower(Long borrowerId) {
     	return this.borrowerService.deleteBorrower(borrowerId);
     }
-
-
 }
+
+
