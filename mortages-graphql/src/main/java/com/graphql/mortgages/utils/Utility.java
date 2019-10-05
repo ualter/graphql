@@ -15,11 +15,16 @@ public class Utility {
 		   ,"Sao Cristovao, 232, São Paulo"
 		   ,"Everglades Dino, 654, Florida"
 		   );
-	private static Random rndAddress = new Random(address.size() - 1);
+	private static Random rndAddress = new Random();
 	
-	
+
+	public static void main(String[] args) {
+		for (int i = 0; i < 20; i++) {
+			System.out.println(Utility.address());
+		}
+	}
 	public static String address() {
-		return address.get(rndAddress.nextInt());
+		return address.get(rndAddress.nextInt(address.size() - 1));
 	}
 	
 	private static List<String> company = Arrays.asList(
@@ -31,11 +36,11 @@ public class Utility {
 		   ,"Banc Sabadell"
 		   ,"Art Bo"
 		   );
-	private static Random rndCompany = new Random(company.size() - 1);
+	private static Random rndCompany = new Random();
 	
 	
 	public static String company() {
-		return company.get(rndCompany.nextInt());
+		return company.get(rndCompany.nextInt(company.size() - 1));
 	}
 	
 	private static List<String> email = Arrays.asList(
@@ -47,11 +52,11 @@ public class Utility {
 		   ,"tsantson@yahoo.com"
 		   ,"quer7yh@google.com"
 		   );
-	private static Random rndEmail = new Random(email.size() - 1);
+	private static Random rndEmail = new Random();
 	
 	
 	public static String email() {
-		return email.get(rndEmail.nextInt());
+		return email.get(rndEmail.nextInt(email.size() - 1));
 	}
 	
 	private static List<String> phone = Arrays.asList(
@@ -63,11 +68,11 @@ public class Utility {
 		   ,"982 434 123"
 		   ,"549 341 333"
 		   );
-	private static Random rndPhone = new Random(phone.size() - 1);
+	private static Random rndPhone = new Random();
 	
 	
 	public static String phone() {
-		return phone.get(rndPhone.nextInt());
+		return phone.get(rndPhone.nextInt(phone.size() - 1));
 	}
 	
 	private static List<String> dates = Arrays.asList(
@@ -79,11 +84,36 @@ public class Utility {
 		   ,"12/05/1948"
 		   ,"03/04/1969"
 		   );
-	private static Random rndDates = new Random(dates.size() - 1);
+	private static Random rndDates = new Random();
 	
 	
 	public static String dates() {
-		return dates.get(rndDates.nextInt());
+		return dates.get(rndDates.nextInt(dates.size() - 1));
+	}
+	
+	private static Random rndMoney = new Random();
+	
+	public static Float money() {
+		Float f = (float)rndMoney.nextInt(350000);
+		if ( f < 1000 ) {
+			f += 1000;
+		}
+		return f;
+	}
+	
+	public static Boolean randomBoolean() {
+		return Math.random() < 0.5; 
+	}
+	
+	private static Random rndRisk = new Random();
+	
+	public static Integer risk() {
+		return rndRisk.nextInt(100);
+	}
+	
+	private static Random rndAge = new Random();
+	public static Integer age() {
+		return rndAge.nextInt(69 + 1 - 21) + 21;
 	}
 
 }

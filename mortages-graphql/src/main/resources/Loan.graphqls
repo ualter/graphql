@@ -1,15 +1,16 @@
-type Mortage {
+type Loan {
   id: ID!
   credit: Float!
-  interest: Int!
+  interest: Float!
   isActive: Boolean!
   balance: Float!
-  trust: Float!
+  trust: Int!
   risk: Int!
   calculated: Boolean!
   directive: Boolean!
   foreignCurrency: String!
   borrower: Borrower!
+  lenders: [Lender!]!
 }
 
 
@@ -20,10 +21,17 @@ enum Currency {
 }
 
 extend type Query {
-  findAllMortage: [Mortage]!
-  countMortage: Long!
+  findAllLoans: [Loan]!
+  findAllLoansCreditGreaterThan(credit: Float!): [Loan]!
+  sumCreditAllLoans: Float!
+  countLoans: Long!
+}
+
+input lenderInputList {
+	id: ID!
 }
 
 extend type Mutation {
-  newMortage(credit: Float!, interest: Float!, foreignCurrency: String!) : Mortage!
+  newLoan(credit: Float!, interest: Float!, foreignCurrency: String!, borrower_id: ID!, lenders: [lenderInputList!]!) : Loan!
+  deleteLoan(id: ID!) : Boolean!
 }

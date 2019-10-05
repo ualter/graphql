@@ -3,6 +3,7 @@ type Borrower {
     eyeColor: String!
     name: String!
     gender: String!
+    age: Int!
     company: String!
     email: String!
     phone: String!
@@ -12,11 +13,11 @@ type Borrower {
 
 
 type Query {
-    findBorrowers: [Borrower]!
+    findAllBorrowers: [Borrower]!
     countBorrowers: Long!
 }
 
 type Mutation {
     newBorrower(eyeColor: String!, name: String!, gender: String!) : Borrower!
-    deleteBorrower(id: ID!) : Boolean
+    deleteBorrower(id: ID!) : Boolean!
 }

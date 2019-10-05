@@ -11,19 +11,12 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode
 @Entity
-public class Borrower {
+public class Lender {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private String eyeColor;
 	private String name;
-	private Integer age;
-    private String gender;
-    private String company;
-    private String email;
-    private String phone;
-    private String address;
-    private String registered;
+    private Boolean isBank;
 
 }

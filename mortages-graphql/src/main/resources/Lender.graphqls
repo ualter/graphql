@@ -1,0 +1,15 @@
+type Lender {
+    id: ID!
+    name: String!
+    isBank: Boolean!
+}
+
+extend type Query {
+  findAllLenders: [Lender]!
+  countLenders: Long!
+}
+
+extend type Mutation {
+  newLender(name: String!, isBank: Boolean!) : Lender!
+  deleteLender(id: ID!) : Boolean!
+}

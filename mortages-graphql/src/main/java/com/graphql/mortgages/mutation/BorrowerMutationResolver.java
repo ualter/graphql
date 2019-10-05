@@ -14,7 +14,7 @@ public class BorrowerMutationResolver implements GraphQLMutationResolver {
 	private BorrowerService borrowerService;
 	
 	public Borrower newBorrower(String eyeColor, String name, String gender) {
-		return this.borrowerService.newBorrower(eyeColor, name, gender);
+		return this.borrowerService.saveBorrower(eyeColor, name, gender);
 	}
 	
     public Boolean deleteBorrower(Long borrowerId) {
